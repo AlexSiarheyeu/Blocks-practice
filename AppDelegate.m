@@ -80,7 +80,7 @@ typedef void (^BlockForStudents)(Student*);
     [GrishaSergeev studentFeels:bko];
     [JohnBibov studentFeels:bko];
     
-    [self performSelector:@selector(test) withObject:nil afterDelay:5];
+    
     
     
     
@@ -89,10 +89,7 @@ typedef void (^BlockForStudents)(Student*);
     return YES;
 }
 
--(void) test {
-    NSLog(@"all");
-    self.students = nil;
-}
+
 
 #pragma mark - UISceneSession lifecycle
 
