@@ -13,7 +13,7 @@ typedef void (^BlockForStudents)(Student*);
 
 
 @interface AppDelegate ()
-@property(nonatomic, strong) Student *student;
+@property Student *students;
 @end
 
 @implementation AppDelegate
@@ -25,58 +25,34 @@ typedef void (^BlockForStudents)(Student*);
     Student *AlexBibov = [Student new];
     AlexBibov.Name = @"Alex";
     AlexBibov.surname = @"Bibov";
+    AlexBibov.temperature = 36.6;
     
     Student *GrishaSergeev = [Student new];
     GrishaSergeev.Name = @"Grisha";
     GrishaSergeev.surname = @"Sergeev";
+    GrishaSergeev.temperature = 38.2;
     
     Student *JohnBibov = [Student new];
     JohnBibov.Name = @"John";
     JohnBibov.surname = @"Bibov";
+    JohnBibov.temperature = 39.4;
     
     Student *PolHeriks = [Student new];
     PolHeriks.Name = @"Pol";
     PolHeriks.surname = @"Heriks";
     
-    Student *TrampBibov = [Student new];
+    Student *TrampBibov = [Student alloc];
     TrampBibov.Name = @"Tramp";
     TrampBibov.surname = @"Bibov";
-    
-    Student *VladNosov  = [Student new];
-    VladNosov.Name = @"Vlad";
-    VladNosov.surname = @"Nosov";
-    
-    Student *PeteKolos = [Student new];
-    PeteKolos.Name = @"Pete";
-    PeteKolos.surname = @"Kolos";
-    
-    Student *DrewDember = [Student new];
-    DrewDember.Name = @"Drew";
-    DrewDember.surname = @"Drew";
-    
-    Student *KolidHuio = [Student new];
-    KolidHuio.Name = @"Kolid";
-    KolidHuio.surname = @"Huio";
-    
-    Student *YutefOposum = [Student new];
-    YutefOposum.Name = @"Yutef";
-    YutefOposum.surname = @"Oposum";
-    
-    Student *BavBib = [Student new];
-    BavBib.Name = @"Bav";
-    BavBib.surname = @"b";
-    
   
     
-    NSArray *students = [NSArray arrayWithObjects:
-                         AlexBibov,  GrishaSergeev,
-                         JohnBibov,  PolHeriks,
-                         TrampBibov, VladNosov,
-                         PeteKolos,  DrewDember,
-                         KolidHuio,  YutefOposum,
-                         BavBib, nil];
+#pragma mark - sorting
+    
+    NSArray *students = [NSArray arrayWithObjects: AlexBibov,  GrishaSergeev,
+                                                   JohnBibov,  PolHeriks, nil];
         
-   students = [students sortedArrayUsingComparator:
+    
+    students = [students sortedArrayUsingComparator:
                   ^NSComparisonResult(id object1, id object2) {
         
        if ([[object1 surname] isEqualToString: [object2 surname]]) {
@@ -88,31 +64,35 @@ typedef void (^BlockForStudents)(Student*);
     }];
 
     for(Student *student in students) {
-        NSLog(@"Student name - %@ %@", student.Name, student.surname);
+        NSLog(@"%@ %@", student.Name, student.surname);
     }
+#pragma mark - checking temperature
 
-
+    BlockForStudents bko = ^(Student *anyStudent) {
+        if (anyStudent.temperature >=36 && anyStudent.temperature <=38) {
+            NSLog(@"%@ feels great", anyStudent.Name);
+        } else {
+            NSLog(@"%@ feels bad", anyStudent.Name);
+        }
+    };
     
-   
+    [AlexBibov studentFeels:bko];
+    [GrishaSergeev studentFeels:bko];
+    [JohnBibov studentFeels:bko];
     
-//    BlockForStudents bko = ^(Student *anyStudent) {
-//        if (anyStudent.temperature >=36 && anyStudent.temperature <=38) {
-//            NSLog(@"%@ feels great", anyStudent.Name);
-//        } else {
-//            NSLog(@"%@ feels bad", anyStudent.Name);
-//        }
-//    };
-//    
-//    [student3 studentFeels:bko];
-//    [student2 studentFeels:bko];
-//    [student1 studentFeels:bko];
+    [self performSelector:@selector(test) withObject:nil afterDelay:5];
+    
+    
     
 
     
     return YES;
 }
 
-
+-(void) test {
+    NSLog(@"all");
+    self.students = nil;
+}
 
 #pragma mark - UISceneSession lifecycle
 

@@ -10,8 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
-
 @interface Student : NSObject
 
 @property(nonatomic, strong) NSString * Name;
@@ -21,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)studentFeels: (void (^)(Student*))howAreYou;
 
-- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay:(NSTimeInterval)delay;
+
 @end
 
 NS_ASSUME_NONNULL_END

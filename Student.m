@@ -11,16 +11,13 @@
 @implementation Student
 
 
-- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay:(NSTimeInterval)delay {
-    [self performSelector:@selector(takePill) withObject:self.Name afterDelay:5.f];
-}
 
-- (void)studentFeels:(void (^)(Student*))howAreYou{
-    NSLog(@"%@, temrerature is %f", self.Name, self.temperature);
+
+- (void)studentFeels:(void (^)(Student*))howAreYou  {
+    NSLog(@"%@'s temrerature is %f", self.Name, self.temperature);
     howAreYou(self);
+
 }
 
--(void)takePill{
-    NSLog(@"take a pill");
-}
+
 @end
