@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BlocksTestClass.h"
 
 @interface ViewController ()
 
@@ -16,8 +17,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self howToAvoidRetainCycle];
+    
 }
+
+-(void)howToAvoidRetainCycle {
+
+    BlocksTestClass* testing = [[BlocksTestClass alloc]init];
+    
+    __weak  BlocksTestClass *weakTesting = testing;
+    
+    testing.block = ^{
+        NSLog(@"I am a block -%@", weakTesting);
+    };
+    testing.block();
+
+      }
+
 
 
 @end

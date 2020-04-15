@@ -10,14 +10,11 @@
 
 @implementation Student
 
-
-
-
 - (void)studentFeels:(void (^)(Student*))howAreYou  {
     NSLog(@"%@'s temrerature is %f", self.Name, self.temperature);
     howAreYou(self);
-
 }
+
 
 
 @end

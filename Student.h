@@ -8,18 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface Student : NSObject
 
 @property(nonatomic, strong) NSString * Name;
 @property(nonatomic, strong) NSString * surname;
 @property(nonatomic, assign) float temperature;
 
-
 -(void)studentFeels: (void (^)(Student*))howAreYou;
 
 
 @end
 
-NS_ASSUME_NONNULL_END
+

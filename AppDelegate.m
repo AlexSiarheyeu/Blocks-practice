@@ -11,9 +11,8 @@
 
 typedef void (^BlockForStudents)(Student*);
 
-
 @interface AppDelegate ()
-@property Student *students;
+
 @end
 
 @implementation AppDelegate
@@ -21,7 +20,6 @@ typedef void (^BlockForStudents)(Student*);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-
     Student *AlexBibov = [Student new];
     AlexBibov.Name = @"Alex";
     AlexBibov.surname = @"Bibov";
@@ -68,7 +66,7 @@ typedef void (^BlockForStudents)(Student*);
     }
 #pragma mark - checking temperature
 
-    BlockForStudents bko = ^(Student *anyStudent) {
+    BlockForStudents howDoYouFeel = ^(Student *anyStudent) {
         if (anyStudent.temperature >=36 && anyStudent.temperature <=38) {
             NSLog(@"%@ feels great", anyStudent.Name);
         } else {
@@ -76,11 +74,13 @@ typedef void (^BlockForStudents)(Student*);
         }
     };
     
-    [AlexBibov studentFeels:bko];
-    [GrishaSergeev studentFeels:bko];
-    [JohnBibov studentFeels:bko];
+    [AlexBibov studentFeels:howDoYouFeel];
+    [GrishaSergeev studentFeels:howDoYouFeel];
+    [JohnBibov studentFeels:howDoYouFeel];
     
     
+    
+   
     
     
     
