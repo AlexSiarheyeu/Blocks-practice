@@ -87,16 +87,16 @@ typedef void (^BlockForStudents)(Student*);
     [JohnBibov studentFeels:howDoYouFeel];
     
     
-    
+#pragma mark - checking age
         
-    [AlexBibov studentAge:@3 howOldAreYou:^(bool success) {
-        if (success) {
-            NSLog(@"you can walk alone");
+    [AlexBibov studentAge:@17 howOldAreYou:^(bool ok) {
+        if (ok) {
+            NSLog(@"You can go");
         } else {
             NSLog(@"Where is your parents?");
         }
     }];
-
+    
     
 
     
