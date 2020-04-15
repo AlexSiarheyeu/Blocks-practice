@@ -15,6 +15,13 @@
     howAreYou(self);
 }
 
-
+- (void)studentAge:(NSNumber *)age howOldAreYou:(checkingAge)info {
+    if (age.intValue > 18 ) {
+        info(true);
+    } else {
+        info(false);
+    }
+    
+}
 
 @end

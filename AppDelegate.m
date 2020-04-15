@@ -12,7 +12,7 @@
 typedef void (^BlockForStudents)(Student*);
 
 @interface AppDelegate ()
-
+//@property (nonatomic, strong) Student *students;
 @end
 
 @implementation AppDelegate
@@ -29,19 +29,27 @@ typedef void (^BlockForStudents)(Student*);
     GrishaSergeev.Name = @"Grisha";
     GrishaSergeev.surname = @"Sergeev";
     GrishaSergeev.temperature = 38.2;
+    //[GrishaSergeev setAge:12];
+
     
     Student *JohnBibov = [Student new];
     JohnBibov.Name = @"John";
     JohnBibov.surname = @"Bibov";
     JohnBibov.temperature = 39.4;
+    //[JohnBibov setAge:18];
     
     Student *PolHeriks = [Student new];
     PolHeriks.Name = @"Pol";
     PolHeriks.surname = @"Heriks";
+    //[PolHeriks setAge:0.3];
+
     
     Student *TrampBibov = [Student alloc];
     TrampBibov.Name = @"Tramp";
     TrampBibov.surname = @"Bibov";
+    //[TrampBibov setAge:90];
+    
+
   
     
 #pragma mark - sorting
@@ -80,9 +88,15 @@ typedef void (^BlockForStudents)(Student*);
     
     
     
-   
-    
-    
+        
+    [AlexBibov studentAge:@3 howOldAreYou:^(bool success) {
+        if (success) {
+            NSLog(@"you can walk alone");
+        } else {
+            NSLog(@"Where is your parents?");
+        }
+    }];
+
     
 
     
