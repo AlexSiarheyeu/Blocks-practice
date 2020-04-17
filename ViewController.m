@@ -30,7 +30,7 @@
     testing.block = ^{
         NSLog(@"I am a block -%@", weakTesting);
     };
-    testing.block();
+    testing.block( );
 
       }
 

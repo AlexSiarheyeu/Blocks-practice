@@ -12,7 +12,7 @@
 typedef void (^BlockForStudents)(Student*);
 
 @interface AppDelegate ()
-//@property (nonatomic, strong) Student *students;
+@property(nonatomic,strong) NSArray *students;
 @end
 
 @implementation AppDelegate
@@ -24,41 +24,41 @@ typedef void (^BlockForStudents)(Student*);
     AlexBibov.Name = @"Alex";
     AlexBibov.surname = @"Bibov";
     AlexBibov.temperature = 36.6;
+    AlexBibov.age = 17;
+    AlexBibov.education = @"BSU";
     
     Student *GrishaSergeev = [Student new];
     GrishaSergeev.Name = @"Grisha";
     GrishaSergeev.surname = @"Sergeev";
+    GrishaSergeev.age = 19;
     GrishaSergeev.temperature = 38.2;
-    //[GrishaSergeev setAge:12];
-
     
     Student *JohnBibov = [Student new];
     JohnBibov.Name = @"John";
     JohnBibov.surname = @"Bibov";
+    JohnBibov.age = 22;
     JohnBibov.temperature = 39.4;
-    //[JohnBibov setAge:18];
     
     Student *PolHeriks = [Student new];
     PolHeriks.Name = @"Pol";
     PolHeriks.surname = @"Heriks";
-    //[PolHeriks setAge:0.3];
+    PolHeriks.age = 34;
 
-    
-    Student *TrampBibov = [Student alloc];
+    Student *TrampBibov = [Student new];
     TrampBibov.Name = @"Tramp";
     TrampBibov.surname = @"Bibov";
-    //[TrampBibov setAge:90];
+    TrampBibov.age = 2;
     
 
   
     
-#pragma mark - sorting
+#pragma mark - sorting students
     
-    NSArray *students = [NSArray arrayWithObjects: AlexBibov,  GrishaSergeev,
-                                                   JohnBibov,  PolHeriks, nil];
+    self.students = [NSArray arrayWithObjects: AlexBibov,  GrishaSergeev,
+                                                   JohnBibov,  PolHeriks, TrampBibov, nil];
         
     
-    students = [students sortedArrayUsingComparator:
+    self.students = [self.students sortedArrayUsingComparator:
                   ^NSComparisonResult(id object1, id object2) {
         
        if ([[object1 surname] isEqualToString: [object2 surname]]) {
@@ -69,7 +69,7 @@ typedef void (^BlockForStudents)(Student*);
         }
     }];
 
-    for(Student *student in students) {
+    for(Student *student in self.students) {
         NSLog(@"%@ %@", student.Name, student.surname);
     }
 #pragma mark - checking temperature
@@ -89,14 +89,26 @@ typedef void (^BlockForStudents)(Student*);
     
 #pragma mark - checking age
         
-    [AlexBibov studentAge:@17 howOldAreYou:^(bool ok) {
-        if (ok) {
-            NSLog(@"You can go");
-        } else {
-            NSLog(@"Where is your parents?");
-        }
-    }];
+    for (Student *student in self.students) {
+        NSNumber *ageToNumber = [NSNumber numberWithInteger:student.age];
+        [student studentAge:ageToNumber howOldAreYou:^(bool check) {
+            if (check) {
+                NSLog(@"Thank you %@, you can go", student.Name);
+            } else {
+                NSLog(@"Thank you %@, where is your parents?", student.Name);
+            }
+        }];
+    }
     
+    
+
+#pragma mark - checking education
+    
+   
+
+    
+    
+
     
 
     

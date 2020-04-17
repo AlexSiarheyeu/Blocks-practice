@@ -21,7 +21,21 @@
     } else {
         info(false);
     }
-    
 }
+
+- (void)education:(checkingEducation)studentHasEducation {
+    //NSArray<NSString*> *universities = @[@"BSU", @"BSEU", @"BNTU"];
+    if ([self.education isEqualToString:@"BSU"]) {
+        if ([self.education isEqualToString:@"BSEU"]) {
+            if ([self.education isEqualToString:@"BNTU"]) {
+                NSLog(@"%@ has education - %@", self.Name, self.education);
+        } else {
+        NSLog(@"%@ does not has education", self.Name);
+        studentHasEducation(@"");
+        }
+        }
+    }
+    }
+
 
 @end
