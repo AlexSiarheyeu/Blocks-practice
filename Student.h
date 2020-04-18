@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^checkingAge)(bool);
-typedef BOOL (^checkingEducation)(NSString* university) ;
+typedef BOOL (^checkingEducation)(NSString*) ;
 
 @interface Student : NSObject
 
@@ -25,7 +25,7 @@ typedef BOOL (^checkingEducation)(NSString* university) ;
 
 -(void)studentAge: (NSNumber*)age howOldAreYou:(checkingAge)info;
 
--(void)education:(checkingEducation)studentHasEducation;
+- (void)education:(NSString*)education checkEd:(checkingEducation)university;
 
 @end
 

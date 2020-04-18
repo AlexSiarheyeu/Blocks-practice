@@ -32,22 +32,30 @@ typedef void (^BlockForStudents)(Student*);
     GrishaSergeev.surname = @"Sergeev";
     GrishaSergeev.age = 19;
     GrishaSergeev.temperature = 38.2;
+    GrishaSergeev.education = @"BSU";
+
     
     Student *JohnBibov = [Student new];
     JohnBibov.Name = @"John";
     JohnBibov.surname = @"Bibov";
     JohnBibov.age = 22;
     JohnBibov.temperature = 39.4;
+    JohnBibov.education = @"BNTU";
+
     
     Student *PolHeriks = [Student new];
     PolHeriks.Name = @"Pol";
     PolHeriks.surname = @"Heriks";
     PolHeriks.age = 34;
+    PolHeriks.education = @"BNTU";
+
 
     Student *TrampBibov = [Student new];
     TrampBibov.Name = @"Tramp";
     TrampBibov.surname = @"Bibov";
     TrampBibov.age = 2;
+    PolHeriks.education = @"school";
+
     
 
   
@@ -100,11 +108,22 @@ typedef void (^BlockForStudents)(Student*);
         }];
     }
     
-    
-
 #pragma mark - checking education
     
-   
+    for (Student *student in self.students) {
+
+        [student education: student.education checkEd:^BOOL(NSString * univer) {
+            if (univer.boolValue) {
+                NSLog(@"%@ finished %@", student.Name, student.education);
+            } else {
+                NSLog(@"%@ doing self study", student.Name);
+            }
+            return false;
+        }];
+          
+        
+    }
+
 
     
     
