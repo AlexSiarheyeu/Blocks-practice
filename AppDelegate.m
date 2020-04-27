@@ -116,6 +116,7 @@ typedef void (^BlockForStudents)(Student*);
             if (univer.boolValue) {
                 NSLog(@"%@ finished %@", student.Name, student.education);
             } else {
+
                 NSLog(@"%@ doing self study", student.Name);
             }
             return false;
